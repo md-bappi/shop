@@ -7,9 +7,11 @@ const Navbar = () => {
 
   return (
     <nav className=" relative flex justify-between items-center py-6">
-      <span className="logo text-2xl font-medium uppercase text-indigo-500">
-        sh<span className="text-orange-500">op</span>
-      </span>
+      <Link to="/">
+        <span className="logo text-2xl font-medium uppercase text-indigo-500">
+          sh<span className="text-orange-500">op</span>
+        </span>
+      </Link>
 
       <ul className="hidden sm:flex gap-5 text-base text-gray-700 uppercase font-medium">
         <NavLink to="/">Home</NavLink>
