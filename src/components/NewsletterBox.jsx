@@ -22,7 +22,7 @@ const NewsletterBox = () => {
           type="email"
           required
           placeholder="Enter your email"
-          classNam1e=" w-full sm:flex-1 outline-none"
+          className=" w-full sm:flex-1 outline-none"
         />
         <button className=" bg-black text-white text-xs px-10 py-4">
           SUBSCRIBE
