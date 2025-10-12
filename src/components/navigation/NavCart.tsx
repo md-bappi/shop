@@ -1,9 +1,9 @@
-import Link from "next/link";
 import { IoCartOutline } from "react-icons/io5";
+import { Link } from "react-router-dom";
 
 const NavCart = () => {
   return (
-    <Link href="/cart" className="relative">
+    <Link to="/cart" className="relative">
       <IoCartOutline
         size={24}
         className="text-gray-700 hover:text-bg-btn-hover transition"

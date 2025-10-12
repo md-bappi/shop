@@ -1,8 +1,8 @@
-import Link from "next/link";
+import { Link } from "react-router-dom";
 
 const Logo = () => {
   return (
-    <Link href="/" className=" uppercase text-lg font-semibold text-bg-btn">
+    <Link to="/" className=" uppercase text-lg font-semibold text-bg-btn">
       shop
     </Link>
   );

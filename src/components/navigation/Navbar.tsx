@@ -1,9 +1,7 @@
-import Link from "next/link";
-import { IoCartOutline } from "react-icons/io5";
-import { FiSearch } from "react-icons/fi";
+import { Link } from "react-router-dom";
 import Logo from "./Logo";
-import SearchBar from "./SearchBar";
 import NavCart from "./NavCart";
+import SearchBar from "./SearchBar";
 
 const Navbar = () => {
   return (
@@ -22,7 +20,7 @@ const Navbar = () => {
 
           {/* Login Button */}
           <Link
-            href="/login"
+            to="/login"
             className="bg-bg-btn text-white px-3 py-1 rounded-md text-sm font-medium hover:bg-bg-btn-hover transition"
           >
             Login
