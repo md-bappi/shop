@@ -1,3 +1,4 @@
+import React from "react";
 import { AiOutlineBarChart, AiOutlineLineChart } from "react-icons/ai";
 import { FiUsers } from "react-icons/fi";
 import { IoCartOutline } from "react-icons/io5";
@@ -8,7 +9,7 @@ export default function Analytics() {
     {
       title: "Total Sales",
       value: "$45,230",
-      icon: <IoCartOutline size={18} className="text-[var(--accent)]" />,
+      icon: <IoCartOutline size={18} className="text-(--accent)" />,
       bg: "bg-[var(--accent)]/10",
       trend: "+8.2% from last week",
     },
@@ -38,6 +39,7 @@ export default function Analytics() {
   return (
     <div>
       <main className="p-6">
+        {/* Header */}
         <div className="mb-6">
           <h1 className="text-xl font-semibold">Analytics Overview</h1>
         </div>
@@ -69,6 +71,7 @@ export default function Analytics() {
 
         {/* Charts Section */}
         <section className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          {/* Sales Chart */}
           <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-100">
             <div className="flex items-center justify-between mb-4">
               <h3 className="font-medium">Sales (last 30 days)</h3>
@@ -79,6 +82,7 @@ export default function Analytics() {
             </div>
           </div>
 
+          {/* Customer Growth Chart */}
           <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-100">
             <div className="flex items-center justify-between mb-4">
               <h3 className="font-medium">Customer Growth</h3>

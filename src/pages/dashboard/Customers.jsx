@@ -2,14 +2,7 @@ import { useState } from "react";
 import { FiUsers } from "react-icons/fi";
 import { AiOutlineUserAdd } from "react-icons/ai";
 
-interface Customer {
-  name: string;
-  email: string;
-  status: "Active" | "Inactive";
-  joined: string;
-}
-
-const sampleCustomers: Customer[] = [
+const sampleCustomers = [
   {
     name: "John Doe",
     email: "john@example.com",
@@ -37,23 +30,24 @@ const sampleCustomers: Customer[] = [
 ];
 
 export default function Customers() {
-  const [customers, setCustomers] = useState<Customer[]>(sampleCustomers);
+  const [customers, setCustomers] = useState(sampleCustomers);
 
   // Counts
   const totalCustomers = customers.length;
   const activeCustomers = customers.filter((c) => c.status === "Active").length;
   const newThisMonth = customers.filter(
     (c) => new Date(c.joined).getMonth() === new Date().getMonth()
-  ).length; // Simple placeholder logic
+  ).length; // placeholder logic
 
   return (
     <div>
       <main className="p-6">
+        {/* Header */}
         <div className="mb-6 flex items-center justify-between">
           <h1 className="text-xl font-semibold">Customers Overview</h1>
         </div>
 
-        {/* Cards */}
+        {/* Metric Cards */}
         <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
           <div className="p-4 rounded-lg bg-white shadow-sm border border-gray-100">
             <div className="flex items-center justify-between">

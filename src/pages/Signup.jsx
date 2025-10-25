@@ -14,14 +14,14 @@ const SignUp = () => {
   const [error, setError] = useState("");
 
   // keep form input names consistent with state keys
-  const handleChange = (e: any) => {
+  const handleChange = (e) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
     });
   };
 
-  const handleSubmit = async (e: any) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
     setLoading(true);
@@ -29,7 +29,7 @@ const SignUp = () => {
     try {
       const res = await fetch("http://localhost:5000/api/auth/signup", {
         method: "POST",
-        credentials: "include", // <<-- required to receive Set-Cookie
+        credentials: "include", // required to receive Set-Cookie
         headers: {
           "Content-Type": "application/json",
         },
@@ -61,7 +61,7 @@ const SignUp = () => {
 
   // ESC closes and go home
   useEffect(() => {
-    const handleKey = (e: KeyboardEvent) => {
+    const handleKey = (e) => {
       if (e.key === "Escape") {
         setIsOpen(false);
         navigate("/");
@@ -93,7 +93,7 @@ const SignUp = () => {
         onClick={(e) => e.stopPropagation()}
       >
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-6 py-1 text-bg-btn">
-          Sign UP
+          Sign Up
         </h2>
 
         <form onSubmit={handleSubmit} className="mt-6">
@@ -163,7 +163,7 @@ const SignUp = () => {
             className="group w-full bg-bg-btn text-white py-2 px-4 rounded-xl font-medium hover:bg-bg-btn-hover transition-colors flex items-center justify-center cursor-pointer overflow-hidden disabled:opacity-60"
           >
             {loading ? "Signing up..." : "Sign Up"}
-            <span className="ml-2 transform transition-transform duration-300 ease-in-out -rotate-[25deg] group-hover:rotate-0 ">
+            <span className="ml-2 transform transition-transform duration-300 ease-in-out -rotate-45 group-hover:rotate-0 ">
               <FaArrowRight />
             </span>
           </button>

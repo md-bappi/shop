@@ -13,14 +13,14 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  const handleChange = (e: any) => {
+  const handleChange = (e) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
     });
   };
 
-  const handleSubmit = async (e: any) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
     setLoading(true);
@@ -54,7 +54,7 @@ const Login = () => {
 
   // ESC key closes modal and goes home
   useEffect(() => {
-    const handleKey = (e: KeyboardEvent) => {
+    const handleKey = (e) => {
       if (e.key === "Escape") {
         setIsOpen(false);
         navigate("/");
@@ -138,7 +138,7 @@ const Login = () => {
             className="group w-full bg-bg-btn text-white py-2 px-4 rounded-xl font-medium hover:bg-bg-btn-hover transition-colors flex items-center justify-center cursor-pointer overflow-hidden"
           >
             Login
-            <span className="ml-2 transform transition-transform duration-300 ease-in-out -rotate-[25deg] group-hover:rotate-0 ">
+            <span className="ml-2 transform transition-transform duration-300 ease-in-out -rotate-45 group-hover:rotate-0 ">
               <FaArrowRight />
             </span>
           </button>

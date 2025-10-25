@@ -1,30 +1,8 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { LuBox } from "react-icons/lu";
 import { IoCartOutline } from "react-icons/io5";
 
-type Rating = {
-  count: number;
-  avg?: number;
-};
-
-type Category = {
-  _id: string;
-  name: string;
-};
-
-type Product = {
-  _id: string;
-  title: string;
-  description: string;
-  price: number;
-  category: Category;
-  stock: number;
-  images: string[]; // urls
-  ratings: Rating;
-  createdAt: string;
-};
-
-const sampleProducts: Product[] = [
+const sampleProducts = [
   {
     _id: "p1",
     title: "Wireless Headphones",
@@ -60,8 +38,8 @@ const sampleProducts: Product[] = [
   },
 ];
 
-const Products = () => {
-  const [products, setProducts] = useState<Product[]>(sampleProducts);
+const DashboardProducts = () => {
+  const [products, setProducts] = useState(sampleProducts);
   const [modalOpen, setModalOpen] = useState(false);
 
   const [form, setForm] = useState({
@@ -73,28 +51,25 @@ const Products = () => {
     image: "",
   });
 
-  // compute category totals from populated category.name
-  const categoryTotals = products.reduce<Record<string, number>>((acc, p) => {
+  const categoryTotals = products.reduce((acc, p) => {
     const name = p.category?.name || "Uncategorized";
     acc[name] = (acc[name] || 0) + 1;
     return acc;
   }, {});
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
+  const handleChange = (e) => {
     setForm((s) => ({ ...s, [e.target.name]: e.target.value }));
   };
 
-  const slugify = (s: string) =>
+  const slugify = (s) =>
     s
       .toLowerCase()
       .trim()
-      .replace(/[^a-z0-9\s-]/g, "") // remove invalid chars
+      .replace(/[^a-z0-9\s-]/g, "")
       .replace(/\s+/g, "_")
       .replace(/_+/g, "_");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
     const title = form.title.trim();
@@ -103,27 +78,21 @@ const Products = () => {
     const stockNum = form.stock ? Number(form.stock) : 0;
     const imageUrl = form.image.trim();
 
-    // basic validation
     if (
       !title ||
       !categoryName ||
       !form.price ||
       Number.isNaN(priceNum) ||
       priceNum <= 0
-    ) {
-      // you can show a toast or error state here
+    )
       return;
-    }
 
-    const newProduct: Product = {
+    const newProduct = {
       _id: `p_${Date.now()}`,
       title,
       description: form.description.trim() || "",
       price: priceNum,
-      category: {
-        _id: `cat_${slugify(categoryName)}`,
-        name: categoryName,
-      },
+      category: { _id: `cat_${slugify(categoryName)}`, name: categoryName },
       stock: stockNum,
       images: imageUrl ? [imageUrl] : [],
       ratings: { count: 0, avg: 0 },
@@ -140,8 +109,6 @@ const Products = () => {
       image: "",
     });
     setModalOpen(false);
-
-    // TODO: POST to backend: axios.post('/api/products', newProduct)
   };
 
   return (
@@ -151,7 +118,7 @@ const Products = () => {
           <h1 className="text-xl font-semibold">Products Overview</h1>
           <button
             onClick={() => setModalOpen(true)}
-            className="bg-[var(--color-bg-btn)] text-white px-4 py-2 rounded-md hover:bg-[var(--color-bg-btn-hover)] transition"
+            className="bg-bg-btn text-white px-4 py-2 rounded-md hover:bg-bg-btn-hover transition"
           >
             Add New Product
           </button>
@@ -176,7 +143,6 @@ const Products = () => {
             </div>
           </div>
 
-          {/* Category totals */}
           {Object.entries(categoryTotals).map(([category, total]) => (
             <div
               key={category}
@@ -196,7 +162,7 @@ const Products = () => {
           ))}
         </section>
 
-        {/* Recent Products (list with stock, price, rating) */}
+        {/* Recent Products */}
         <section className="bg-white p-4 rounded-lg shadow-sm border border-gray-100">
           <div className="flex items-center justify-between mb-3">
             <h3 className="font-medium">Recent Products</h3>
@@ -231,9 +197,8 @@ const Products = () => {
                       }
                     >
                       {p.stock}
-                    </span>
-                    {" • "}
-                    Ratings:{" "}
+                    </span>{" "}
+                    • Ratings:{" "}
                     {p.ratings?.avg
                       ? `${p.ratings.avg} (${p.ratings.count})`
                       : `${p.ratings.count} ratings`}
@@ -261,7 +226,6 @@ const Products = () => {
                   required
                 />
               </div>
-
               <div>
                 <label className="text-sm font-medium">Description</label>
                 <textarea
@@ -272,7 +236,6 @@ const Products = () => {
                   rows={3}
                 />
               </div>
-
               <div className="grid grid-cols-3 gap-2">
                 <div>
                   <label className="text-sm font-medium">Category</label>
@@ -307,7 +270,6 @@ const Products = () => {
                   />
                 </div>
               </div>
-
               <div>
                 <label className="text-sm font-medium">Image URL</label>
                 <input
@@ -317,7 +279,6 @@ const Products = () => {
                   className="w-full border border-gray-300 rounded-md px-2 py-1 mt-1"
                 />
               </div>
-
               <div className="flex justify-end gap-2 mt-4">
                 <button
                   type="button"
@@ -328,7 +289,7 @@ const Products = () => {
                 </button>
                 <button
                   type="submit"
-                  className="px-4 py-2 rounded-md bg-[var(--color-bg-btn)] text-white hover:bg-[var(--color-bg-btn-hover)] transition"
+                  className="px-4 py-2 rounded-md bg-bg-btn text-white hover:bg-bg-btn-hover transition"
                 >
                   Add Product
                 </button>
@@ -341,4 +302,4 @@ const Products = () => {
   );
 };
 
-export default Products;
+export default DashboardProducts;

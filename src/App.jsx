@@ -1,16 +1,16 @@
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
-import Navbar from "./components/navigation/Navbar";
-import SignUp from "./pages/SignUp";
+import SignUp from "./pages/Signup";
 import Login from "./pages/Login";
-import Dashboard from "./pages/dashboard/Dashboard";
+import Navbar from "./components/navigation/Navbar";
+import NotFound from "./pages/NotFound";
 import Admin from "./pages/Admin";
+import Dashboard from "./pages/dashboard/Dashboard";
 import Orders from "./pages/dashboard/Orders";
+import DashboardProducts from "./pages/dashboard/DashboardProducts";
 import Customers from "./pages/dashboard/Customers";
-import Products from "./pages/dashboard/Products";
 import Analytics from "./pages/dashboard/Analytics";
 import Settings from "./pages/dashboard/Settings";
-import NotFound from "./pages/NotFound";
 
 const App = () => {
   return (
@@ -28,7 +28,7 @@ const App = () => {
         <Route path="/" element={<Admin />}>
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="orders" element={<Orders />} />
-          <Route path="products" element={<Products />} />
+          <Route path="dashboard-products" element={<DashboardProducts />} />
           <Route path="customers" element={<Customers />} />
           <Route path="analytics" element={<Analytics />} />
           <Route path="settings" element={<Settings />} />

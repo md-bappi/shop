@@ -1,3 +1,4 @@
+import React from "react";
 import { LuBox } from "react-icons/lu";
 import { IoCartOutline } from "react-icons/io5";
 import { FiUsers } from "react-icons/fi";

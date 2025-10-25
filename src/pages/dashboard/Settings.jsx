@@ -5,7 +5,7 @@ export default function Settings() {
   const [adminEmail, setAdminEmail] = useState("admin@shopcreate.com");
   const [currency, setCurrency] = useState("USD");
 
-  const handleSave = (e: React.FormEvent) => {
+  const handleSave = (e) => {
     e.preventDefault();
     alert("Settings saved successfully!");
     // Here you can integrate API call to save settings
