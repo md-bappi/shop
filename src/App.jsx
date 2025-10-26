@@ -11,6 +11,8 @@ import DashboardProducts from "./pages/dashboard/DashboardProducts";
 import Customers from "./pages/dashboard/Customers";
 import Analytics from "./pages/dashboard/Analytics";
 import Settings from "./pages/dashboard/Settings";
+import Products from "./components/ui/Products";
+import ProductDetails from "./components/ui/ProductDetails";
 
 const App = () => {
   return (
@@ -20,6 +22,8 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/products" element={<Products />} />
+        <Route path="/products/:id" element={<ProductDetails />} />
 
         {/* Not Found Page */}
         <Route path="*" element={<NotFound />} />
